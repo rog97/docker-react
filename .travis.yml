@@ -1,0 +1,10 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t rteran/docker-react -f Dockerfile.dev .
+
+# commands that need to be executed for the tests to be run
+script:
+  - docker run -e CI=true rteran/docker-react npm run test
